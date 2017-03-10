@@ -1,5 +1,7 @@
 #ifndef RGBCOLOR_H
 #define RGBCOLOR_H
+#include<iostream>
+#include<stdio.h>
 using namespace std;
 class RGBColor{
 private:
