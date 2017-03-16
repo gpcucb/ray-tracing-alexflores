@@ -1,6 +1,8 @@
 #include"RGBColor.h"
 #include"Vector.h"
 #include"Camara.h"
+#include"Rayo.h"
+#include"Esfera.h"
 
 int main()
 {
@@ -18,7 +20,8 @@ int main()
 	vec1.mostrar();
 	vec2.mostrar();
 	res.mostrar();*/
-	
+
+	// Valores de camara 
 	Vector e,center,up,dir;
 	e.x = 1;
 	e.y = 2;
@@ -37,12 +40,22 @@ int main()
 	float nx = 640.0;
 	float ny = 480.0;
 
+	//Valores de esfera
+	Vector posicion;
+	posicion.x = 370;
+	posicion.y = 120;
+	posicion.z = 370;
+	float radio = 120;
+
 	Camara camara(e,center,up,fov,df);
+	Esfera esfera(posicion,radio);
 
 		for (int i = 0; i < nx; i++){
 			for (int j= 0; j < ny; j++){
 				dir = camara.calcular_dir_rayo(i,j,nx,ny);
-				dir.mostrar();
+				Rayo rayo(e,dir);
+				esfera.interseccion(rayo);
+				//dir.mostrar();
 			}
 		}
 
